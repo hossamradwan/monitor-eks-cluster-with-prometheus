@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: main-rules-alert-config
+  namespace: monitoring
+spec:
+  route:
+    receiver: 'email'
+    repeatInterval: 30m
+    routes:
+    - matchers:
+      - name: alertname
+        value: HostHighCPULoad
+    - matchers:
+      - name: alertname
+        value: KubernetesPodCrachLooping
+      repeatInterval: 10m # change the interval for this alert      
+  receivers:
+  - name: 'email'
+    emailConfigs:
+    - to: "hradwan96.hr@gmail.com"
+      from: "hradwan96.hr@gmail.com"
+      smarthost: "smtp.gmail.com:587"
+      authUsername: "hradwan96.hr@gmail.com"
+      authIdentity: "hradwan96.hr@gmail.com"
+      authPassword: 
+        name: gmail-auth # secret component has the password
+        key: password
+
+
+
