@@ -1,0 +1,13 @@
+#local tf files have the installed providers
+terraform/.terraform/*
+
+.history/*
+
+#tf state files
+terraform/*.tfstate
+terraform/*.tfstate.*
+
+#tf variables files
+*.tfvars
+
+terraform/.terraform.lock.hcl
