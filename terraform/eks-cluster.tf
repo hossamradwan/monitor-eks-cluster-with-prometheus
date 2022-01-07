@@ -36,7 +36,12 @@ module "eks" {
         {
             instance_type = "t2.small"
             name = "worker-group-1"
-            asg_desired_capacity = 3
+            asg_desired_capacity = 2
+        },
+        {
+            instance_type = "t2.medium"
+            name = "worker-group-2"
+            asg_desired_capacity = 1
         }
     ]
 }
