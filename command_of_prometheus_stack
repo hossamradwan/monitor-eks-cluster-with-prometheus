@@ -7,5 +7,12 @@ kubectl create namespace monitoring
 helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
 
 
+to open prometheus ui
+
+kubectl port-forward service/monitoring-kube-prometheus-prometheus -n monitoring 9090:9090 &
+
+to open grafana
+
+kubectl port-forward service/monitoring-grafana -n monitoring 8080:80 &
 
 
