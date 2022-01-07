@@ -14,5 +14,5 @@ terraform/.terraform.lock.hcl
 
 terraform/kubeconfig*
 
-alert-manager/emailsecret.yaml
+alert-manager/email-secret.yaml
 
