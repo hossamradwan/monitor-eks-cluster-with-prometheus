@@ -1,3 +1,5 @@
+export KUBECONFIG=/home/hossam/Documents/monitor-eks-with-prometheus/terraform/kubeconfig_myapp-eks-cluster
+
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
 helm repo update
@@ -23,4 +25,11 @@ to -> kubectl run cpu-test --image=containerstack/cpustress -- --cpu 4 --timeout
 to open alertmanager ui
 kubectl port-forward service/monitoring-kube-prometheus-prometheus -n monitoring 9093:9093 &
 
+to install redis exporter helm chart
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+
+helm install redis-exporter prometheus-community/prometheus-redis-exporter -f monitoring/redis-values.yaml
 

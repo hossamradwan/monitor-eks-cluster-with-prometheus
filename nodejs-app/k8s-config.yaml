@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+  labels:
+    app: nodeapp
+spec:
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      imagePullSecrets:
+      - name: my-registry-key
+      containers:
+      - name: nodeapp
+        image: hossam1radwan/demo-app:node-app
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapp
+  labels:
+    app: nodeapp
+spec:
+  type: ClusterIP
+  selector:
+    app: nodeapp
+  ports:
+  - name: nodje-app-service
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: monitoring-node-app
+  labels:
+    release: monitoring
+    app: nodeapp
+spec:
+  endpoints:
+  - path: /metrics
+    port: nodje-app-service
+    targetPort: 3000
+  namespaceSelector:
+    matchNames:
+    - default  # on which namespace the app is running
+  selector:
+    matchLabels:
+      app: nodeapp # find the app that has this label
+
+# for ducker hub secret
+# kubectl create secret docker-registry my-registry-key --docker-server=https://index.docker.io/v1/
+# --docker-username=hossam1radwan --docker-password xxx
+
+# to access tha app
+# kubectl port-forward svc/nodeapp 3000:3000

@@ -1,0 +1,7 @@
+serviceMonitor:
+  # the kink between the exporter and prometheus
+  enabled: true
+  labels:
+    release: monitoring
+
+redisAddress: redis://redis-cart:6379 #the redis service name

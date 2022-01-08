@@ -16,3 +16,8 @@ terraform/kubeconfig*
 
 alert-manager/email-secret.yaml
 
+nodejs-app/.idea
+nodejs-app/node_modules
+nodejs-app/*.DS_Store
+nodejs-app/*tgz
+
