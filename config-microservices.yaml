@@ -1,4 +1,4 @@
-# can be used instead of the helm chrts and helmfile
+# can be used instead of the helm chrts and helmfile..
 ---
 apiVersion: apps/v1
 kind: Deployment
