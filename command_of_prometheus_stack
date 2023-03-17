@@ -8,6 +8,11 @@ kubectl create namespace monitoring
 
 helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
 
+to edit before instaling
+
+helm fetch prometheus-community/kube-prometheus-stack
+helm template prometheus prometheus-community/kube-prometheus-stack  --output-dir prometheus
+
 
 to open prometheus ui
 

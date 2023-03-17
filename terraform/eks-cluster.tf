@@ -41,7 +41,7 @@ module "eks" {
         {
             instance_type = "t2.medium"
             name = "worker-group-2"
-            asg_desired_capacity = 1
+            asg_desired_capacity = 0
         }
     ]
 }
