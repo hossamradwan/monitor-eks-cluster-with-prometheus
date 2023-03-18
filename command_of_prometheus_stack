@@ -1,3 +1,5 @@
+aws eks --region example_region update-kubeconfig --name cluster_name
+
 export KUBECONFIG=/home/hossam/Documents/monitor-eks-with-prometheus/terraform/kubeconfig_myapp-eks-cluster
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
